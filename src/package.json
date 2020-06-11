@@ -1,0 +1,37 @@
+{
+  "name": "developer-api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=production node server/app.js",
+    "build": "next build",
+    "migrate": "sequelize-cli db:migrate",
+    "migrate-prod": "NODE_ENV=production sequelize-cli db:migrate",
+    "undomigrate": "sequelize-cli db:migrate:undo",
+    "serve": "nodemon -w server/ server/app.js"
+  },
+  "dependencies": {
+    "express": "~4.16.1",
+    "express-validator": "6.2.0",
+    "body-parser": "~1.19.0",
+    "collections": "^5.1.9",
+    "config": "3.2.2",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "8.0.0",
+    "helmet": "^3.21.1",
+    "jsonwebtoken": "8.5.1",
+    "log4js": "~4.5.1",
+    "moment-timezone": "^0.5.26",
+    "morgan": "~1.9.1",
+    "pg": "7.12.1",
+    "sequelize": "5.19.0",
+    "sequelize-cli": "^5.5.1",
+    "sync-request": "^6.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "nodemon": "~1.19.1"
+  }
+}
