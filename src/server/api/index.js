@@ -34,7 +34,7 @@ export default class ExpressApi {
   }
 
   listen () {
-    this.app.listen(this.config.port, () => {
+    this.app.listen(process.env.PORT || this.config.port, () => {
       this.logger.debug('Developer API is listening on port ' + this.config.port)
     })
   }
