@@ -32,8 +32,6 @@ export default class DeveloperRepository {
       knownTechnologies: developer.knownTechnologies,
       id: developer.id
     }
-    console.log('***********insert1*************')
-    console.log(newDeveloper)
     return this.developerModel.create(newDeveloper).then(serializer)
   }
 

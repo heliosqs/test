@@ -1,15 +1,11 @@
 // A function that converts the body of a developer API request into the internal domain representation
 const _singleInstanceSerializer = (developer) => {
-    console.log('******serializer**********')
-    console.log(developer)
-    console.log('******serializer2**********')
     const newDeveloper = {
         id: developer.id,
         completeName: developer.nombres_completos,
         knownTechnologies: developer.tecnologias_conocidas,
         githubUrl: developer.link_github
     }
-    console.log(newDeveloper)
     return newDeveloper
 }
 
@@ -24,8 +20,6 @@ const serializer = (data) => {
 }
 
 const _singleInstanceDeserializer = (developer) => {
-    console.log('*******newSerializer1*******')
-    console.log(developer)
     return {
         id: developer.id,
         nombres_completos: developer.completeName,

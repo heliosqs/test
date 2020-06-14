@@ -6,11 +6,7 @@ export default function makeAddDeveloperApi ({ addDeveloperService }) {
     }
     const body = request.body
     try {
-      console.log('*******addDeveloper1*******')
-      console.log(body)
       const developer = await addDeveloperService(serializer(body))
-      console.log('*******addDeveloper2*******')
-      console.log(developer)
       return {
         headers: headers,
         statusCode: 200,
