@@ -100,4 +100,4 @@ Los servicios para manejar los recursos de información de los desarrolladores y
 * [Eliminar desarrolladores](docs/api/deleteDev.md) : `DELETE /developers/:id/`
 
 ## Heroku
-Servicio desplegado en https://elioqtest.herokuapp.com:8000/developers
+Servicio desplegado en https://elioqtest.herokuapp.com/developers
