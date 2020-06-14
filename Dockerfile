@@ -7,6 +7,7 @@ WORKDIR /build
 COPY ./src/ /build/
 RUN npm install
 RUN npm run build
+RUN npm uninstall --save-dev
 USER developers
 EXPOSE 8000
 CMD npm run start

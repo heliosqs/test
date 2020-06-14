@@ -4,9 +4,9 @@
 ## Descripción
 El presente proyecto corresponde a un microservicio para la gestión de la información de desarrolladores, incluyendo las operaciones CRUD (Creación, eliminación, modificación, lectura) para el manejo de sus registros. La información necesaria para representar a un desarrollador es:
 
-* nombres_completos: <String>
-* link_github: <String>
-* tecnologias_conocidas: <Array<String>>
+* nombres_completos: String
+* link_github: String
+* tecnologias_conocidas: <Array(String)>
 
 ## Arquitectura
 El código fuente de la presente aplicación está disponible en el directorio src. El lenguaje de programación usado para el desarrollo es Javascript ES6 mediante el framework NodeJS.
@@ -58,7 +58,7 @@ $ docker build --tag developer_api:1.0 .
 2. Inicializar el contenedor a partir de la imagen creada en el paso anterior.
 
 ```
-$ docker run --publish 8000:8000 -it --name prod_developer_api developer_api:1.0 sh
+$ docker run --publish 8000:8000 --name prod_developer_api developer_api:1.0
 ```
 
 # Despliegue Local
@@ -98,3 +98,6 @@ Los servicios para manejar los recursos de información de los desarrolladores y
 * [Crear desarrolladores](docs/api/addDev.md) : `POST /developers/`
 * [Modificar los desarrolladores](docs/api/updateDev.md) : `PUT /developers/:id/`
 * [Eliminar desarrolladores](docs/api/deleteDev.md) : `DELETE /developers/:id/`
+
+## Heroku
+Servicio desplegado en https://elioqtest.herokuapp.com:8000/developers
