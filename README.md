@@ -9,7 +9,37 @@ El presente proyecto corresponde a un microservicio para la gestión de la infor
 * tecnologias_conocidas: <Array<String>>
 
 ## Arquitectura
+El código fuente de la presente aplicación está disponible en el directorio src. El lenguaje de programación usado para el desarrollo es Javascript ES6 mediante el framework NodeJS.
+
+La arquitectura usada es mediante división en capas a la cual se le adapta un principio de *Clean Architecture* que fue propuesto por Robert C. Martin. Esta arquitectura se puede visualizar en la Figura 1.
+
+![Arquitectura](docs/images/arch.png)
+
+En este modelo se busca tener componentes que sean independientes de la implementación y modelos dependientes de la misma. Los modelos independientes corresponden a las entidades y los servicios.
+
+#### Arquitectura Independiente
+
+##### Entidades
+Las entidades se refieren a las diferentes clases o abstracciones del dominio. En el presente proyecto están localizadas en el directorio *src/server/entities*.
+
+##### Servicios
+Los servicios es un conjunto de clases que permite que otros componentes de la capa externa de la aplicación puedan interactuar con las diferentes entidades. Estos servicios durante su construcción reciben un repositorio el cual les permite almacenar los datos. Para ello, se espera que estos repositorios compartan los mismos métodos y generen los mismos resultados. Están localizadas en el directorio *src/server/services*. 
+
+#### Arquitectura Dependiente de la Tecnología
+
+###### Repositorio
+Es el componente de la aplicación encargado de la persistencia de los datos ingresados por los usuarios. En este caso existen dos tipos de repositorios: uno que permite almacenar los datos en la memoria del servidor mediante un HashMap (`MemoryRepository`) y otro que permite almacenar en una base de datos de MongoDB (`MongoRepository`). Considerando que Javascript ES6 no provee interfaces, no es posible forzar a las dos clases a que tengan la misma definición y que esta sea revisada en tiempo de compilación. Por tanto, se debe garantizar que ambas provean los mismo métodos y atributos para el servicio. Adicionalmente, MongoRepository no interactúa directamente con las entidades, esto es debido a que la librería *Mongoose* requiere que se defina un modelo bajo su propia sintaxis. Con el objetivo de no incluir información de *MongoDB* en el dominio, se ha creado una clase adaptadora llamada *serializer* la cual permite la conversión entre la representación específica de plataforma con la independiente y visceversa.
+
+##### API
+La API expone los recursos de la aplicación a consumidores externos mediante un servicio REST. Este componente depende de ExpressJS para la creación de las diferentes rutas y del servidor. Como dependencia interna requiere del servicio de la capa media de la aplicación. Esto permite que se pueda usar otro *framework* para ofrecer un nuevo mecanismo de interacción.
+
 ## Configuración
+En el archivo src/config/default.json se especifican los parámetros de configuración para el sistema. Estos son:
+
+* `developerApi.serverConfig.port` : Puerto en el cual escucha el servidor una vez ha sido configurado y desplegado.
+* `developerApi.repositoryConfig.isMemoryRepository`: Valor de tipo *Boolean*. Cuando es *True* el servidor usa una estructura de datos interna para almacenar la información de los desarrolladores. Si es *False* el servidor usa MongoDB como repositorio.
+* `developerApi.repositoryConfig.mongoBaseUrl`: Si el valor del parámetro de configuración *isMemoryRepository* es *False*, corresponde a la cadena de texto usada para la conexión con el servidor de MongoDB.
+
 ## Despliegue
 Este servidor puede ser desplegado dentro de un contenedor de Docker o en su defecto de manera local en una máquina que tiene instalado Nodejs.
 

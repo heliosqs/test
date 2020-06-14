@@ -20,11 +20,11 @@ Ninguno
 
 **Ejemplo de la Respuesta**
 
-```json[
+```[
 {
     "id": "4b6a43fb-7531-4caf-82d6-75153cf0fc07",
     "nombres_completos": "Elio Quevedo",
-    "github_link": "https://github.com/heliosqs/",
+    "link_github": "https://github.com/heliosqs/",
     "tecnologias_conocidas": ["Python", "Java", "NodeJS"]
 },
 ...

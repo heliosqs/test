@@ -1,55 +1,43 @@
 # Listar desarrolladores
 
-Listar los desarrolladores almacenados en el repositorio del servidor.
+Permite agregar un desarrollador al repositorio de la aplicación.
 
 **URL** : `/developers/`
 
-**Método** : `GET`
+**Método** : `POST`
 
 **Autenticación** : NO
 
-**Data constraints**
+**Body**
 
 ```json
 {
-    "username": "[valid email address]",
-    "password": "[password in plain text]"
+    "nombres_completos": ["Nombre del desarrollador"],
+    "link_github": ["Enlace de github del desarrollador"],
+    "tecnologias_conocidas": ["Lista de tecnología que el desarrollador conoce"]
 }
 ```
 
-**Data example**
+**Ejemplo del Body**
 
 ```json
 {
-    "username": "iloveauth@example.com",
-    "password": "abcd1234"
+    "nombres_completos": "Elio Quevedo",
+    "link_github": "https://github.com/heliosqs/",
+    "tecnologias_conocidas": ["Python", "Java", "NodeJS"]
 }
 ```
 
-## Success Response
+## Respuesta exitosa
 
-**Code** : `200 OK`
+**Código** : `200 OK`
 
-**Content example**
+**Ejemplo de la respuesta**
 
-```json
-{
-    "token": "93144b288eb1fdccbe46d6fc0f241a51766ecd3d"
-}
-```
-
-## Error Response
-
-**Condition** : If 'username' and 'password' combination is wrong.
-
-**Code** : `400 BAD REQUEST`
-
-**Content** :
-
-```json
-{
-    "non_field_errors": [
-        "Unable to login with provided credentials."
-    ]
+```json{
+    "id": "4b6a43fb-7531-4caf-82d6-75153cf0fc07",
+    "nombres_completos": "Elio Quevedo",
+    "link_github": "https://github.com/heliosqs/",
+    "tecnologias_conocidas": ["Python", "Java", "NodeJS"]
 }
 ```
