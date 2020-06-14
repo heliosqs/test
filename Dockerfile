@@ -1,8 +1,9 @@
 FROM node:12.13.1-alpine AS build
 WORKDIR /build
 COPY ./src/ /build/
-RUN npm install --production
-RUN npm run build
+RUN npm install --production \
+    npm install -g babel-cli \
+    npm run build
 
 FROM node:12.13.1-alpine
 RUN apk add tzdata
