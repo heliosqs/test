@@ -1,0 +1,11 @@
+{
+    "developerApi": {
+        "serverConfig": {
+            "port": 8000
+        },
+        "repositoryConfig": {
+            "isMemoryRepository": true,
+            "mongoBaseUrl": "mongodb://localhost"
+        }
+    }
+}
